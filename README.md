@@ -1,24 +1,47 @@
-May 8, 2017 -> https://www.youtube.com/watch?v=_7rRK4S9uk0
-instructions:
-  https://fossbytes.com/google-fuchsia-os-open-source-picture-first-look-armadillo-ui/
+## Fuchsia UI - resources and instructions for building armadillo
+Below you can find links to forks of deleted repos, which were needed for building latest armadillo apk from source. Unfortunately I haven't managed to find a copy of lib.widgets repo, but I included instructions for getting necessary files from topaz
+
+Here is a video of armadillo apk you can build (included in an article I based my instructions on, written in May, 2017) https://www.youtube.com/watch?v=_7rRK4S9uk0)
+
+# Instructions
+  These instructions work with linux shell, run them in fuchsia-ui directory after git-cloning.
+  (I'll make a simple script soon)
+  ```
   mkdir apps
   mkdir lib
   mkdir third_party
   cd apps
   git clone https://github.com/iambenqazy/sysui.git
+  cd sysui; git checkout 18464f7; cd .. //this is the latest armadillo, for older see "important sysui commits" below
   mkdir modules
   cd modules
   git clone https://github.com/rafaelklaessen/modules-common.git common
-  cd ../../lib
-  mkdir -p widgets/packages/ <= skopiuj tu do folder public/dart/widgets z git clone https://github.com/fuchsia-mirror/topaz.git (commit 16th), a do roota folder tools z topaz repo (commit MASTER~1)
-  cd ../third_party
+  //this is the latest modules-common version, for older see "important modules commits" below
+  cd ../../third_party
   git clone https://fuchsia.googlesource.com/third_party/dart-pkg
+  cd dart-pkg; git checkout 58bd2338; cd ..
+  //this is the latest dart-pkg version that works, for older see "important dart-pkg commits" below
+  cd ../..
+  ```
+  
+  Now the trickiest part, we'll clone the topaz mirror from github and go one commit back to recover deleted files. Then we'll copy topaz/tools folder to our root fuchsia-ui, after that we'll change topaz repo to commit 38d060a65 (16th in my list) and copy topaz/public/dart/widgets folder to fuchsia-ui/widgets/packages, so that the end path is: fuchsia-ui/widgets/packages/widgets. I'll try to find a better solution, but this workaround works
+  ```
+  mkdir -p lib/widgets/packages
+  git clone https://github.com/fuchsia-mirror/topaz.git
+  cd topaz; git checkout HEAD~1; cp -r tools ..
+  git checkout 38d060a65; cp -r public/dart/widgets ../lib/widgets/packages/
   cd ..
+  ```
+  
+  Finally we download the appropriate flutter version (pretty old but works, default is last working, you can change the flutter version commit in FLUTTER_VERSION file) and build the app
+  ```
   ./update_flutter.sh
   ./fix_environment.sh
-  source sysui/tools/environment.sh
-  cd sysui/armadillo; flutter run
-
+  cd apps/sysui; source tools/environment.sh //you have to run source command from apps/sysui, otherwise it won't work!
+  cd armadillo; flutter run
+  ```
+## Important commits
+```
 important sysui commits:
   1 ==> 107cca7faacffc330e45e3311808557ec37a4c10:
     last working commit before cli_util error
@@ -67,7 +90,7 @@ important modules commits:
     works with 15th
   16 ==> master
 
-important dart-pkg modules:
+important dart-pkg commits:
   13 ==> c2ade30:
     works with 13th
   14 ==> 7685bf43:
@@ -86,3 +109,4 @@ important flutter commits:
 
 important topaz commits:
   16 ==> 38d060a65
+```
