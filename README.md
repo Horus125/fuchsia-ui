@@ -1,9 +1,9 @@
-## Fuchsia UI - resources and instructions for building armadillo
+# Fuchsia UI - resources and instructions for building armadillo
 Below you can find links to forks of deleted repos, which were needed for building latest armadillo apk from source. Unfortunately I haven't managed to find a copy of lib.widgets repo, but I included instructions for getting necessary files from topaz
 
 Here is a video of armadillo apk you can build (included in an article I based my instructions on, written in May, 2017) https://www.youtube.com/watch?v=_7rRK4S9uk0)
 
-# Instructions
+## Instructions
   These instructions work with linux shell, run them in fuchsia-ui directory after git-cloning.
   (I'll make a simple script soon)
   ```
