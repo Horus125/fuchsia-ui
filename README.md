@@ -3,6 +3,19 @@ Below you can find links to forks of deleted repos, which were needed for buildi
 
 Here is a video of armadillo apk you can build (included in an article I based my instructions on, written in May, 2017) https://www.youtube.com/watch?v=_7rRK4S9uk0)
 
+## Screenshots
+<p align="center">
+  <img src="screenshots/Screenshot_20190406-010625.jpg" width="350" title="armadillo" alt="image1">
+  <img src="screenshots/Screenshot_20190406-010638.jpg" width="350" title="suggestions" alt="image2">
+  <img src="screenshots/Screenshot_20190406-010650.jpg" width="350" title="quick settings" alt="image3">
+  <img src="screenshots/Screenshot_20190406-010735.jpg" width="350" title="opened app" alt="image5">
+  <img src="screenshots/Screenshot_20190406-010713.jpg" width="350" title="recent apps" alt="image4">
+  
+  <img src="screenshots/Screenshot_20190406-010725.jpg" width="350" title="tab view" alt="image6">
+</p>
+
+
+
 ## Instructions
   These instructions work with linux shell, run them in fuchsia-ui directory after git-cloning.
   (I'll make a simple script soon)
