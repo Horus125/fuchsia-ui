@@ -34,7 +34,7 @@ Here is a video of armadillo apk you can build (included in an article I based m
   git clone https://fuchsia.googlesource.com/third_party/dart-pkg
   cd dart-pkg; git checkout 58bd2338; cd ..
   //this is the latest dart-pkg version that works, for older see "important dart-pkg commits" below
-  cd ../..
+  cd ..
   ```
   
   Now the trickiest part, we'll clone the topaz mirror from github and go one commit back to recover deleted files. Then we'll copy topaz/tools folder to our root fuchsia-ui, after that we'll change topaz repo to commit 38d060a65 (16th in my list) and copy topaz/public/dart/widgets folder to fuchsia-ui/widgets/packages, so that the end path is: fuchsia-ui/widgets/packages/widgets. I'll try to find a better solution, but this workaround works
