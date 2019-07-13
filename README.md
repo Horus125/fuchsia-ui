@@ -42,7 +42,7 @@ Here is a video of armadillo apk you can build (included in an article I based m
   mkdir -p lib/widgets/packages
   git clone https://github.com/fuchsia-mirror/topaz.git
   cd topaz; git checkout HEAD~1; cp -r tools ..
-  git checkout 38d060a65; cp -r public/dart/widgets ../apps/lib/widgets/packages/
+  git checkout 38d060a65; cp -r public/dart/widgets ../lib/widgets/packages/
   cd ..
   ```
   
